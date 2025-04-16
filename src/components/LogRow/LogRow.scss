@@ -1,0 +1,11 @@
+.logRow {
+  display: flex;
+  gap: .5rem;
+  padding: .75rem;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+}

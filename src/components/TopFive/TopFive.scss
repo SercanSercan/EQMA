@@ -1,0 +1,11 @@
+.topFive {
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  flex: 1;
+
+  // Bug fix for desktop growing card
+  @media (width > 920px) {
+    align-self: flex-start;
+  }
+}

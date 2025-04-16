@@ -1,0 +1,39 @@
+@use '@fremtind/jokul/styles/core/jkl';
+@use '@fremtind/jokul/styles/core/core';
+@use '@fremtind/jokul/styles/components/tag';
+@use '@fremtind/jokul/styles/components/loader';
+@use '@fremtind/jokul/styles/components/message';
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  main {
+    min-height: 90vh;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  @media (width < 920px) {
+    padding: 1rem;
+
+    &__cards {
+      flex-direction: column-reverse;
+    }
+  }
+
+  footer {
+    margin: 1.5rem 0;
+  }
+}
