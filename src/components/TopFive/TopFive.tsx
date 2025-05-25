@@ -6,11 +6,11 @@ import LogRow from "../LogRow/LogRow.tsx";
 const TopFive: React.FC<ITopFive> = ({ allEarthquakes }) => {
 
     const sortByMagnitude = (logs: IEarthQuakeLog[]) => {
-        return logs.sort((a, b) => compare(a.Magnitude, b.Magnitude));
+        return [...logs].sort((a, b) => compare(a.Magnitude, b.Magnitude));
     };
 
     const sortByDate = (logs: IEarthQuakeLog[]) => {
-        return logs.sort((a, b) => compare(parseToDate(a.Timestamp), parseToDate(b.Timestamp)));
+        return [...logs].sort((a, b) => compare(parseToDate(a.Timestamp), parseToDate(b.Timestamp)));
     }
 
     const topFiveUnsorted = sortByMagnitude(allEarthquakes).slice(0, 5);
