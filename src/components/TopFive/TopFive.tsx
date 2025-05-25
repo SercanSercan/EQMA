@@ -5,17 +5,21 @@ import LogRow from "../LogRow/LogRow.tsx";
 
 const TopFive: React.FC<ITopFive> = ({ allEarthquakes }) => {
 
-    const allLogsSortedByMagnitude = allEarthquakes
-        .sort((a, b) => compare(a.Magnitude, b.Magnitude));
+    const sortByMagnitude = (logs: IEarthQuakeLog[]) => {
+        return logs.sort((a, b) => compare(a.Magnitude, b.Magnitude));
+    };
 
-    const topFiveLogs = allLogsSortedByMagnitude.slice(0, 5);
+    const sortByDate = (logs: IEarthQuakeLog[]) => {
+        return logs.sort((a, b) => compare(parseToDate(a.Timestamp), parseToDate(b.Timestamp)));
+    }
 
-    const topFiveSortedByDate = topFiveLogs.sort((a, b) => compare(parseToDate(a.Timestamp), parseToDate(b.Timestamp)));
+    const topFiveUnsorted = sortByMagnitude(allEarthquakes).slice(0, 5);
+    const topFive = sortByDate(topFiveUnsorted);
 
     return (
         <div className="topFive">
             <h2>Top 5</h2>
-            {topFiveSortedByDate.map((earthquake: IEarthQuakeLog, idx) => (
+            {topFive.map((earthquake: IEarthQuakeLog, idx) => (
                 <LogRow earthquakeLog={earthquake} key={idx} />
             ))}
         </div>
