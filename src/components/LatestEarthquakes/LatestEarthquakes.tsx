@@ -33,7 +33,7 @@ const LatestEarthquakes: React.FC<ILatestEarthquakes> = ({ allEarthquakes }) => 
               onChange={handleChange}
               value={searchText}
               maxLength={12}
-              placeholder={'Search location'}
+              placeholder={'Search...'}
               autoComplete={'off'}
               className="latestEarthquakes__searchBox"
           />
