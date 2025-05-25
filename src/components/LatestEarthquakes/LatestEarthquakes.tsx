@@ -1,6 +1,7 @@
 import './LatestEarthquakes.scss';
 import { IEarthQuakeLog, ILatestEarthquakes } from "../../utilities/interfaces.ts";
 import { TextInput } from '@fremtind/jokul/components/text-input';
+import { InfoMessage } from "@fremtind/jokul";
 import LogRow from "../LogRow/LogRow.tsx";
 import { ChangeEvent, useState } from "react";
 
@@ -37,9 +38,14 @@ const LatestEarthquakes: React.FC<ILatestEarthquakes> = ({ allEarthquakes }) => 
               className={'latestEarthquakes__searchBox'}
           />
           <div className="latestEarthquakes__list">
-              {eqLogs.map((earthquake: IEarthQuakeLog, idx) => (
-                  <LogRow earthquakeLog={earthquake} key={idx} />
-              ))}
+              {eqLogs.length > 0 ?
+                  eqLogs.map((earthquake: IEarthQuakeLog, idx) => (
+                          <LogRow earthquakeLog={earthquake} key={idx} />
+                  )) : (
+                  <InfoMessage title={'No results'}>
+                      No earthquakes in <strong>{searchText}</strong> lately.
+                  </InfoMessage>
+              )}
           </div>
       </div>
     );
