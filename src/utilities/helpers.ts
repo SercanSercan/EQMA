@@ -13,6 +13,14 @@ const dateStringToISO = (dateStr: string): string => {
     return dateStr.replace(" ", "T").replace(/\./g, '-');
 };
 
+
+/*
+* Converts sample input "2025.05.24 13:51:59" into JS date time number.
+* */
+export const parseToDate = (dateStr: string): number => {
+    return new Date(dateStringToISO(dateStr)).getTime();
+};
+
 export const compare = (a: number, b: number) => {
     if (a < b) {
         return 1;
