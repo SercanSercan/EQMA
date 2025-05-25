@@ -32,10 +32,10 @@ const LatestEarthquakes: React.FC<ILatestEarthquakes> = ({ allEarthquakes }) => 
               label={''}
               onChange={handleChange}
               value={searchText}
-              maxLength={30}
+              maxLength={12}
               placeholder={'Search location'}
               autoComplete={'off'}
-              className={'latestEarthquakes__searchBox'}
+              className="latestEarthquakes__searchBox"
           />
           <div className="latestEarthquakes__list">
               {eqLogs.length > 0 ?
