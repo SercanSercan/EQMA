@@ -4,6 +4,11 @@
   padding: 1rem;
   flex: 1;
 
+  &__searchBox {
+    width: 80%;
+    margin: 1rem 0;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
