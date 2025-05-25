@@ -12,4 +12,4 @@ and the architecture diagrams of EQMA project (Earthquake Monitoring Application
 - npm run build => builds the app under dist/ folder
 
 ## YouTube
-You can watch the course via YouTube: 
+You can watch the course via [YouTube](https://www.youtube.com/playlist?list=PL0g0OleoorEjzoRtm-qwxEMn-CDji-tSS)
