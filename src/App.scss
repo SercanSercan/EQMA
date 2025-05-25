@@ -1,9 +1,9 @@
-@use '@fremtind/jokul/styles/core/jkl';
 @use '@fremtind/jokul/styles/core/core';
-@use '@fremtind/jokul/styles/components/tag';
-@use '@fremtind/jokul/styles/components/loader';
-@use '@fremtind/jokul/styles/components/message';
-@use '@fremtind/jokul/styles/components/text-input';
+@use '@fremtind/jokul/styles/core/jkl';
+@use '@fremtind/jokul/styles/fonts' with (
+  $webfonts-dir: '../../../node_modules/@fremtind/jokul/src/fonts'
+);
+@use '@fremtind/jokul/styles/styles';
 
 .app {
   display: flex;
