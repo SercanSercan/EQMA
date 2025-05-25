@@ -43,8 +43,8 @@ function App() {
                 </div>
             )}
             {isError && (
-                <ErrorMessage fullWidth={false} dismissed={false}>
-                    Our service is down 😥
+                <ErrorMessage title={'Sorry Boss! 😥'}>
+                    Our service is down
                 </ErrorMessage>
             )}
         </main>
