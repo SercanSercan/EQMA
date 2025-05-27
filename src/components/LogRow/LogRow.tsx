@@ -9,7 +9,9 @@ const LogRow: React.FC<ILogRow> = ({ earthquakeLog }) => {
 
     return (
         <div className="logRow">
-            <MagnitudeTag magnitude={Magnitude} />
+            <div className="logRow__tag-wrapper">
+                <MagnitudeTag magnitude={Magnitude} />
+            </div>
             <div className="logRow__info">
                 <div className="logRow__info__location">
                     <LocationLink location={Location} lat={Latitude} lon={Longitude} />

@@ -3,6 +3,16 @@
   gap: .5rem;
   padding: .75rem;
 
+  &__tag-wrapper {
+    margin: auto 0;
+
+    .jkl-tag {
+      min-height: 45px;
+      min-width: 45px;
+      justify-content: center;
+    }
+  }
+
   &__info {
     display: flex;
     flex-direction: column;
