@@ -3,10 +3,6 @@
 .latestEarthquakes {
   @include mixins.cardFrame;
 
-  @media (width < 600px) {
-    width: 350px;
-  }
-
   &__searchBox {
     width: 80%;
     margin: 1rem 0;
