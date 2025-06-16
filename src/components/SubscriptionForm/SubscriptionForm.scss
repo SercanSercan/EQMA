@@ -8,11 +8,14 @@
     text-wrap: wrap;
   }
 
-  &__emailInput {
-    padding-bottom: 1rem;
-  }
-
   &__result {
     padding-top: 1rem;
+  }
+
+  &__emailInput {
+    align-items: flex-start;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
   }
 }

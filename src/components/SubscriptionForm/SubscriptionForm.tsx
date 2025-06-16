@@ -38,22 +38,22 @@ const SubscriptionForm: React.FC = () => {
     return (
         <form className="subscriptionForm">
             <h2>Major Earthquake Notification</h2>
-            <TextInput
-                label={''}
-                errorLabel={invalidEmail}
-                onChange={handleChange}
-                value={userEmail}
-                maxLength={25}
-                placeholder={'Email address'}
-                autoComplete={'off'}
-                className={'subscriptionForm__emailInput'}
-            />
-            <Button
-                variant={"primary"}
-                onClick={async (e) => await handleSubmit(e)}
-            >
-                Subscribe
-            </Button>
+            <div className="subscriptionForm__emailInput">
+                <TextInput
+                    label={''}
+                    errorLabel={invalidEmail}
+                    onChange={handleChange}
+                    value={userEmail}
+                    placeholder={'Email address'}
+                    autoComplete={'off'}
+                />
+                <Button
+                    variant={"primary"}
+                    onClick={async (e) => await handleSubmit(e)}
+                >
+                    Subscribe
+                </Button>
+            </div>
             <div className={"subscriptionForm__result"}>
                 {subscriptionResult && (
                     <SuccessMessage>{subscriptionResult}</SuccessMessage>
