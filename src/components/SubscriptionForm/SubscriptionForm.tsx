@@ -1,6 +1,6 @@
 import './SubscriptionForm.scss';
 import { ChangeEvent, useState } from "react";
-import { Button, ErrorMessage, SuccessMessage, TextInput } from "@fremtind/jokul";
+import { Button, ErrorMessage, Loader, SuccessMessage, TextInput } from "@fremtind/jokul";
 import { isValidEmail } from "../../utilities/helpers.ts";
 import { subscribeToMajorEQ } from "../../utilities/api.ts";
 
@@ -9,6 +9,7 @@ const SubscriptionForm: React.FC = () => {
     const [invalidEmail, setInvalidEmail] = useState<string>('');
     const [subscriptionResult, setSubscriptionResult] = useState<string>('');
     const [subscriptionError, setSubscriptionError] = useState<string>('');
+    const [loader, setLoader] = useState<boolean>(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setUserEmail(e.target.value.trim());
@@ -20,6 +21,7 @@ const SubscriptionForm: React.FC = () => {
         setInvalidEmail('');
         e.preventDefault();
         if (isValidEmail(userEmail)) {
+            setLoader(true);
             try {
                 const response = await subscribeToMajorEQ(userEmail);
                 if (response.alreadySubscribed) {
@@ -29,6 +31,8 @@ const SubscriptionForm: React.FC = () => {
                 }
             } catch (err) {
                 setSubscriptionError('Subscription failed. 😥');
+            } finally {
+                setLoader(false);
             }
         } else {
             setInvalidEmail('Please type a valid email address');
@@ -55,6 +59,9 @@ const SubscriptionForm: React.FC = () => {
                 </Button>
             </div>
             <div className={"subscriptionForm__result"}>
+                {loader && (
+                    <Loader className="subscriptionForm__result__loader" textDescription={"Registering your email address"} />
+                )}
                 {subscriptionResult && (
                     <SuccessMessage>{subscriptionResult}</SuccessMessage>
                 )}

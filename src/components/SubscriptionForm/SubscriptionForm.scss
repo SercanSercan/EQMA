@@ -10,6 +10,11 @@
 
   &__result {
     padding-top: 1rem;
+
+    &__loader {
+      justify-content: center;
+      padding: 1rem 0;
+    }
   }
 
   &__emailInput {
