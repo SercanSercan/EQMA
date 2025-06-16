@@ -3,11 +3,6 @@
 .subscriptionForm {
   @include mixins.cardFrame;
 
-  h2 {
-    padding-bottom: 1rem;
-    text-wrap: wrap;
-  }
-
   &__result {
     padding-top: 1rem;
 
@@ -22,5 +17,9 @@
     display: flex;
     gap: 1rem;
     justify-content: space-between;
+  }
+
+  &__info {
+    padding: 1rem 0;
   }
 }

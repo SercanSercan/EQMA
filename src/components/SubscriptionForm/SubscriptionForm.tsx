@@ -41,7 +41,11 @@ const SubscriptionForm: React.FC = () => {
 
     return (
         <form className="subscriptionForm">
-            <h2>Major Earthquake Notification</h2>
+            <h2>Notification Service</h2>
+            <p className="subscriptionForm__info">
+                EQMA provides e-mail notifications. Whenever a major earthquake occurs,
+                you will receive an instant notification in your mailbox.
+            </p>
             <div className="subscriptionForm__emailInput">
                 <TextInput
                     label={''}
