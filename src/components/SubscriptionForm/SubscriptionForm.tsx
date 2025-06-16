@@ -1,25 +1,34 @@
 import './SubscriptionForm.scss';
 import { ChangeEvent, useState } from "react";
-import { Button, TextInput } from "@fremtind/jokul";
+import { Button, ErrorMessage, SuccessMessage, TextInput } from "@fremtind/jokul";
 import { isValidEmail } from "../../utilities/helpers.ts";
 import { subscribeToMajorEQ } from "../../utilities/api.ts";
 
 const SubscriptionForm: React.FC = () => {
     const [userEmail, setUserEmail] = useState<string>('');
     const [invalidEmail, setInvalidEmail] = useState<string>('');
+    const [subscriptionResult, setSubscriptionResult] = useState<string>('');
+    const [subscriptionError, setSubscriptionError] = useState<string>('');
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setUserEmail(e.target.value.trim());
     };
 
     const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
+        setSubscriptionResult('');
+        setSubscriptionError('');
+        setInvalidEmail('');
         e.preventDefault();
         if (isValidEmail(userEmail)) {
-            const response = await subscribeToMajorEQ();
-            if (response.alreadySubscribed) {
-                console.log('Already done')
-            } else {
-                console.log('First time subscription')
+            try {
+                const response = await subscribeToMajorEQ(userEmail);
+                if (response.alreadySubscribed) {
+                    setSubscriptionResult('You have already subscribed. Please click confirmation link.')
+                } else {
+                    setSubscriptionResult('Confirmation email is sent. Please check your inbox and click confirmation link.')
+                }
+            } catch (err) {
+                setSubscriptionError('Subscription failed. 😥');
             }
         } else {
             setInvalidEmail('Please type a valid email address');
@@ -45,6 +54,14 @@ const SubscriptionForm: React.FC = () => {
             >
                 Subscribe
             </Button>
+            <div className={"subscriptionForm__result"}>
+                {subscriptionResult && (
+                    <SuccessMessage>{subscriptionResult}</SuccessMessage>
+                )}
+                {subscriptionError && (
+                    <ErrorMessage>{subscriptionError}</ErrorMessage>
+                )}
+            </div>
         </form>
     );
 }

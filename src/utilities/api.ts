@@ -9,11 +9,11 @@ export const getEqLogs = async () => {
     return response.data;
 };
 
-export const subscribeToMajorEQ = async () => {
+export const subscribeToMajorEQ = async (email: string) => {
     const response = await axios.post(
         'https://573uo0cgxd.execute-api.eu-north-1.amazonaws.com/postAPISubscribeToMajorEQ/subscribeToMajorEQ',
         {
-            email: 'leylek.sercan@gmail.com'
+            email: email,
         },
         {
             headers: {
