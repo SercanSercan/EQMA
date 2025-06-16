@@ -12,7 +12,7 @@ const SubscriptionForm: React.FC = () => {
         setUserEmail(e.target.value.trim());
     };
 
-    const handleSubmit = async (e: SubmitEvent<HTMLButtonElement>) => {
+    const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         if (isValidEmail(userEmail)) {
             const response = await subscribeToMajorEQ();
@@ -41,7 +41,7 @@ const SubscriptionForm: React.FC = () => {
             />
             <Button
                 variant={"primary"}
-                onClick={handleSubmit}
+                onClick={async (e) => await handleSubmit(e)}
             >
                 Subscribe
             </Button>
