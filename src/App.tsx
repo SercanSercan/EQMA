@@ -5,6 +5,7 @@ import { getEqLogs } from "./utilities/api.ts";
 import { ErrorMessage, Loader } from "@fremtind/jokul";
 import LatestEarthquakes from "./components/LatestEarthquakes/LatestEarthquakes.tsx";
 import TopFive from "./components/TopFive/TopFive.tsx";
+import SubscriptionForm from "./components/SubscriptionForm/SubscriptionForm.tsx";
 
 function App() {
     const [allEarthquakes, setAllEarthquakes] = useState<IEarthQuakeLog[]>([]);
@@ -38,8 +39,13 @@ function App() {
             )}
             {!loading && !isError && (
                 <div className="app__cards">
-                    <LatestEarthquakes allEarthquakes={allEarthquakes} />
-                    <TopFive allEarthquakes={allEarthquakes} />
+                    <div className="app__cards__leftCol">
+                        <LatestEarthquakes allEarthquakes={allEarthquakes} />
+                    </div>
+                    <div className="app__cards__rightCol">
+                        <TopFive allEarthquakes={allEarthquakes} />
+                        <SubscriptionForm />
+                    </div>
                 </div>
             )}
             {isError && (

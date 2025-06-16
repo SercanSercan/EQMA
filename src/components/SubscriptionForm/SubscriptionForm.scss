@@ -1,0 +1,9 @@
+@use '../../utilities/mixins';
+
+.subscriptionForm {
+  @include mixins.cardFrame;
+
+  &__emailInput {
+    padding: 1rem 0;
+  }
+}

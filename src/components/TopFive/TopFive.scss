@@ -1,9 +1,7 @@
+@use '../../utilities/mixins';
+
 .topFive {
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 1rem;
-  flex: 1;
-  width: 500px;
+  @include mixins.cardFrame;
 
   @media (width < 600px) {
     width: 350px;

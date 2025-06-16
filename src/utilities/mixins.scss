@@ -1,0 +1,7 @@
+@mixin cardFrame {
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  flex: 1;
+  width: 500px;
+}

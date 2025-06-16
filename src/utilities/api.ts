@@ -8,3 +8,19 @@ export const getEqLogs = async () => {
 
     return response.data;
 };
+
+export const subscribeToMajorEQ = async () => {
+    const response = await axios.post(
+        'https://573uo0cgxd.execute-api.eu-north-1.amazonaws.com/postAPISubscribeToMajorEQ/subscribeToMajorEQ',
+        {
+            email: 'leylek.sercan@gmail.com'
+        },
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+
+    return response.data;
+}

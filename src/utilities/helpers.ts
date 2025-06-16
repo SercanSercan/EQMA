@@ -32,3 +32,8 @@ export const compare = (a: number, b: number) => {
 
     return 0;
 }
+
+export function isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
