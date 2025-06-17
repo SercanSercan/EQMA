@@ -10,7 +10,7 @@ const SubscriptionForm: React.FC = () => {
     const [invalidEmail, setInvalidEmail] = useState<string>('');
     const [subscriptionResult, setSubscriptionResult] = useState<string>('');
     const [subscriptionError, setSubscriptionError] = useState<string>('');
-    const [loader, setLoader] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setUserEmail(e.target.value.trim());
@@ -22,7 +22,7 @@ const SubscriptionForm: React.FC = () => {
         setInvalidEmail('');
         e.preventDefault();
         if (isValidEmail(userEmail)) {
-            setLoader(true);
+            setIsLoading(true);
             try {
                 const response = await subscribeToMajorEQ(sanitizeHtml(userEmail));
                 if (response.alreadySubscribed) {
@@ -33,7 +33,7 @@ const SubscriptionForm: React.FC = () => {
             } catch (err) {
                 setSubscriptionError('Subscription failed. 😥');
             } finally {
-                setLoader(false);
+                setIsLoading(false);
             }
         } else {
             setInvalidEmail('Please type a valid email address');
@@ -58,6 +58,7 @@ const SubscriptionForm: React.FC = () => {
                 />
                 <Button
                     variant={"primary"}
+                    disabled={isLoading}
                     onClick={async (e) => await handleSubmit(e)}
                     className="subscriptionForm__emailInput__submitBtn"
                 >
@@ -65,7 +66,7 @@ const SubscriptionForm: React.FC = () => {
                 </Button>
             </div>
             <div className={"subscriptionForm__result"}>
-                {loader && (
+                {isLoading && (
                     <Loader className="subscriptionForm__result__loader" textDescription={"Registering your email address"} />
                 )}
                 {subscriptionResult && (
