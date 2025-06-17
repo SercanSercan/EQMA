@@ -3,6 +3,7 @@ import { ChangeEvent, useState } from "react";
 import { Button, ErrorMessage, Loader, SuccessMessage, TextInput } from "@fremtind/jokul";
 import { isValidEmail } from "../../utilities/helpers.ts";
 import { subscribeToMajorEQ } from "../../utilities/api.ts";
+import sanitizeHtml from 'sanitize-html';
 
 const SubscriptionForm: React.FC = () => {
     const [userEmail, setUserEmail] = useState<string>('');
@@ -23,7 +24,7 @@ const SubscriptionForm: React.FC = () => {
         if (isValidEmail(userEmail)) {
             setLoader(true);
             try {
-                const response = await subscribeToMajorEQ(userEmail);
+                const response = await subscribeToMajorEQ(sanitizeHtml(userEmail));
                 if (response.alreadySubscribed) {
                     setSubscriptionResult('You have already subscribed.')
                 } else {
