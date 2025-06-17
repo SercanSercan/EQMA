@@ -25,7 +25,7 @@ const SubscriptionForm: React.FC = () => {
             try {
                 const response = await subscribeToMajorEQ(userEmail);
                 if (response.alreadySubscribed) {
-                    setSubscriptionResult('You have already subscribed. Please click confirmation link.')
+                    setSubscriptionResult('You have already subscribed.')
                 } else {
                     setSubscriptionResult('Confirmation email is sent. Please check your inbox and click confirmation link.')
                 }
