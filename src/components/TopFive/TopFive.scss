@@ -3,6 +3,10 @@
 .topFive {
   @include mixins.cardFrame;
 
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+
   // Bug fix for desktop growing card
   @media (width > 920px) {
     align-self: flex-start;
