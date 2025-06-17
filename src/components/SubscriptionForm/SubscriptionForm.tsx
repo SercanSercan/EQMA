@@ -58,6 +58,7 @@ const SubscriptionForm: React.FC = () => {
                 <Button
                     variant={"primary"}
                     onClick={async (e) => await handleSubmit(e)}
+                    className="subscriptionForm__emailInput__submitBtn"
                 >
                     Subscribe
                 </Button>
