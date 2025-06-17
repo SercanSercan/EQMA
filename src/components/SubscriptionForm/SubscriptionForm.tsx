@@ -16,7 +16,7 @@ const SubscriptionForm: React.FC = () => {
         setUserEmail(e.target.value.trim());
     };
 
-    const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         setSubscriptionResult('');
         setSubscriptionError('');
         setInvalidEmail('');
@@ -41,7 +41,7 @@ const SubscriptionForm: React.FC = () => {
     }
 
     return (
-        <form className="subscriptionForm">
+        <form className="subscriptionForm" onSubmit={handleSubmit}>
             <h2>Notification Service</h2>
             <p className="subscriptionForm__info">
                 EQMA provides e-mail notifications. Whenever a major earthquake occurs,
@@ -59,8 +59,8 @@ const SubscriptionForm: React.FC = () => {
                 <Button
                     variant={"primary"}
                     disabled={isLoading}
-                    onClick={async (e) => await handleSubmit(e)}
                     className="subscriptionForm__emailInput__submitBtn"
+                    type={"submit"}
                 >
                     Subscribe
                 </Button>
